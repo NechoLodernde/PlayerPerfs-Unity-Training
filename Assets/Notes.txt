@@ -1,0 +1,35 @@
+PlayerPerfs Pros and Cons
+
+Pros:
+Pre-Built
+Straightforward Functions
+Similar to Dictionary (Key-Value pair)
+
+Cons:
+Restrictions (int, float, string)
+Calls One Value at A Time
+Saves to A Single File
+
+When Using WebPlayer
+
+PlayerPrefs Size Limit: 1 MB
+
+PlayerPrefs Are Good For
+
+- Player Settings
+- Simple Game Progress
+- Scoreboards
+
+How PlayerPrefs Work
+
+Just type
+PlayerPrefs.FunctionYouWant()*
+Works from any class
+
+*Be sure to include using UnityEngine; in your namespaces
+
+PlayerPrefs docs: https://docs.unity3d.com/ScriptReference/PlayerPerfs.html
+
+Key Value Pairs
+
+Key (string, Address of your data) - Value (int, float, string)
