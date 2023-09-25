@@ -21,11 +21,20 @@ public class MenuUIHandler : MonoBehaviour
     
     private readonly string startSceneName = "StartScene";
     private readonly string settingsSceneName = "SettingsScene";
-    private readonly float notifTimer = 10f;
+    private readonly float notifTimer = 5f;
 
     private void Start()
     {
-        
+        if(PlayerPrefs.HasKey("PersonName") &&
+            PlayerPrefs.HasKey("PersonRole") &&
+            PlayerPrefs.HasKey("PersonGender"))
+        {
+            introPanel.SetActive(true);
+            pNameText.text = PlayerPrefs.GetString("PersonName");
+            pRoleText.text = PlayerPrefs.GetString("PersonRole");
+            pGenderText.text = PlayerPrefs.GetString("PersonGender");
+            StartCoroutine(SpawnIntro());
+        }
     }
 
     public void GoToSettings()
@@ -59,5 +68,6 @@ public class MenuUIHandler : MonoBehaviour
     IEnumerator SpawnIntro()
     {
         yield return new WaitForSeconds(notifTimer);
+        introPanel.SetActive(false);
     }
 }

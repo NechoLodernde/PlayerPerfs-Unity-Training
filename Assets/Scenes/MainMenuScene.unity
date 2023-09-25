@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -684,6 +684,9 @@ MonoBehaviour:
   startButton: {fileID: 1795548138}
   settingsButton: {fileID: 1186777473}
   exitButton: {fileID: 2000162574}
+  pNameText: {fileID: 975385745}
+  pRoleText: {fileID: 570506127}
+  pGenderText: {fileID: 504718722}
   clickSound: {fileID: 8300000, guid: bcb4660b6b600544fa81bd5f49e6a8f2, type: 3}
 --- !u!1 &570506125
 GameObject:
