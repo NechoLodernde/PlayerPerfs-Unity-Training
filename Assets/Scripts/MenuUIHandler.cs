@@ -14,8 +14,8 @@ public class MenuUIHandler : MonoBehaviour
     public Button settingsButton;
     public Button exitButton;
     public AudioClip clickSound;
-    private string startSceneName = "StartScene";
-    private string settingsSceneName = "SettingsScene";
+    private readonly string startSceneName = "StartScene";
+    private readonly string settingsSceneName = "SettingsScene";
 
     public void GoToSettings()
     {
@@ -38,7 +38,10 @@ public class MenuUIHandler : MonoBehaviour
 
     public void ButtonClicked()
     {
-        SfxHandler.SfxInstance.sfx.clip = clickSound;
-        SfxHandler.SfxInstance.sfx.Play();
+        bool sfxState = SfxHandler.SfxInstance._sfxState;
+        if (sfxState)
+        {
+            SfxHandler.SfxInstance.SetClip(clickSound);
+        }
     }
 }

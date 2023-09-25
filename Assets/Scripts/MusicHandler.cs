@@ -12,6 +12,8 @@ public class MusicHandler : MonoBehaviour
     public AudioSource music = null;
     // Will contain the volume value for music
     public float _musicVolume;
+    // 
+    public bool _musicState = true;
     // String that will hold Object ID, for multiple instance problem
     public string objectID;
 
@@ -62,7 +64,7 @@ public class MusicHandler : MonoBehaviour
         }
         else
         {
-            music.outputAudioMixerGroup.audioMixer.SetFloat("musicVolume", -15f);
+            music.outputAudioMixerGroup.audioMixer.SetFloat("musicVolume", -20f);
         }
     }
 
@@ -70,5 +72,44 @@ public class MusicHandler : MonoBehaviour
     public void SetVolume(float number)
     {
         music.outputAudioMixerGroup.audioMixer.SetFloat("musicVolume", Mathf.Min(0, number));
+    }
+
+    public void SetState()
+    {
+        Debug.Log("Music Data is : " + PlayerPrefs.GetString("MusicState"));
+        if (PlayerPrefs.HasKey("MusicState"))
+        {
+            string musicState = PlayerPrefs.GetString("MusicState");
+            if (musicState.Equals("True"))
+            {
+                _musicState = true;
+                music.UnPause();
+            }
+            else
+            {
+                _musicState = false;
+                music.Pause();
+            }
+        }
+        else
+        {
+            _musicState = true;
+            music.UnPause();
+        }
+    }
+
+    public void SetState(string toggleState)
+    {
+        Debug.Log("Music State is: " + toggleState);
+        if (toggleState.Equals("True"))
+        {
+            _musicState = true;
+            music.UnPause();
+        }
+        else
+        {
+            _musicState = false;
+            music.Pause();
+        }
     }
 }

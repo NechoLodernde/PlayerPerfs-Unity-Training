@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartUIScript : MonoBehaviour
 {
     public AudioClip clickSound;
-    private string menuSceneName = "MainMenuScene";
+    private readonly string menuSceneName = "MainMenuScene";
     
     public void GoToMenu()
     {
@@ -15,7 +15,10 @@ public class StartUIScript : MonoBehaviour
 
     public void ButtonClicked()
     {
-        SfxHandler.SfxInstance.sfx.clip = clickSound;
-        SfxHandler.SfxInstance.sfx.Play();
+        bool sfxState = SfxHandler.SfxInstance._sfxState;
+        if (sfxState)
+        {
+            SfxHandler.SfxInstance.SetClip(clickSound);
+        }
     }
 }

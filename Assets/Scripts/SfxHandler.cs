@@ -12,6 +12,8 @@ public class SfxHandler : MonoBehaviour
     public AudioSource sfx = null;
     // Will contain the volume value for sound effect
     public float _sfxVolume;
+    //
+    public bool _sfxState = true;
     // String that will hold Object ID, for multiple instance problem
     public string objectID;
 
@@ -62,7 +64,7 @@ public class SfxHandler : MonoBehaviour
         }
         else
         {
-            sfx.outputAudioMixerGroup.audioMixer.SetFloat("sfxVolume", -15f);
+            sfx.outputAudioMixerGroup.audioMixer.SetFloat("sfxVolume", -20f);
         }
     }
 
@@ -70,6 +72,38 @@ public class SfxHandler : MonoBehaviour
     public void SetVolume(float number)
     {
         sfx.outputAudioMixerGroup.audioMixer.SetFloat("sfxVolume", Mathf.Min(0, number));
+    }
+
+    public void SetState()
+    {
+        if (PlayerPrefs.HasKey("SfxState"))
+        {
+            string sfxState = PlayerPrefs.GetString("SfxState");
+            if (sfxState.Equals("True"))
+            {
+                _sfxState = true;
+            }
+            else
+            {
+                _sfxState = false;
+            }
+        }
+        else
+        {
+            _sfxState = true;
+        }
+    }
+
+    public void SetState(string toggleState)
+    {
+        if (toggleState.Equals("True"))
+        {
+            _sfxState = true;
+        }
+        else
+        {
+            _sfxState = false;
+        }
     }
 
     // Method that will configure current audio clip
