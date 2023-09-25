@@ -10,12 +10,23 @@ using UnityEditor;
 
 public class MenuUIHandler : MonoBehaviour
 {
+    public GameObject introPanel; 
     public Button startButton;
     public Button settingsButton;
     public Button exitButton;
+    public TMP_Text pNameText;
+    public TMP_Text pRoleText;
+    public TMP_Text pGenderText;
     public AudioClip clickSound;
+    
     private readonly string startSceneName = "StartScene";
     private readonly string settingsSceneName = "SettingsScene";
+    private readonly float notifTimer = 10f;
+
+    private void Start()
+    {
+        
+    }
 
     public void GoToSettings()
     {
@@ -43,5 +54,10 @@ public class MenuUIHandler : MonoBehaviour
         {
             SfxHandler.SfxInstance.SetClip(clickSound);
         }
+    }
+
+    IEnumerator SpawnIntro()
+    {
+        yield return new WaitForSeconds(notifTimer);
     }
 }
